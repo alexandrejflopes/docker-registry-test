@@ -2,7 +2,7 @@ node {
     checkout scm
 
     // 192.168.160.48:5000 | regCert
-    docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
+    docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub') {
 
         def customImage = docker.build("alexandrejflopes/testapp-image", "./testapp")
 
