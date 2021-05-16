@@ -1,0 +1,11 @@
+A parte de construir a imagem pode ser colocada num stage. Por exemplo,
+
+stage("publish-image"){
+  docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub') {
+
+        def customImage = docker.build("alexandrejflopes/testapp-image", "./testapp")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
+    }
+}
