@@ -7,7 +7,7 @@ node {
       2º arg -> ID da credencial (pode não ser passado)
     */
     // 'https://registry.hub.docker.com/', 'dockerhub'
-    docker.withRegistry('192.168.160.48') {
+    docker.withRegistry('http://192.168.160.48') {
 
         /*
           1º arg -> nome da imagem: neste caso é o meu username (alexandrejflopes) /<nome da imagem>
