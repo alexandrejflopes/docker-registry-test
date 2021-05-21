@@ -1,25 +1,82 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import bloomLogo from './simbolo.svg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null // sample
+    }
+
+  }
+
+  componentDidMount() {
+
+    /*const requestPromise = showAPIData();
+
+    requestPromise.then((result) => {
+      this.setState({ data: result })
+    })*/
+
+    
+
+    // TODO: get result, save it in state and show some information on UI
+  }
+
+
+
+  render() {
+
+    const data = this.state.data;
+
+    
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={bloomLogo} className="App-logo" alt="logo" />
+          <h2>
+            BLOOM
+          </h2>
+
+          <hr></hr>
+
+          {data ? (
+            <>
+              <table>
+                <tbody>
+                  <tr>
+                    <th style={{padding:"30px"}}>Sensor ID</th>
+                    <th style={{padding:"30px"}}>Sensor type</th>
+                    <th style={{padding:"30px"}}>Value</th>
+                    <th style={{padding:"30px"}}>Timestamp</th>
+                  </tr>
+                  {
+                    data.map((reading, key) => {
+                      return (
+                        <tr key={key}>
+                          <td>{reading.sensor_id}</td>
+                          <td>{reading.sensor_type}</td>
+                          <td>{reading.value + " " + reading.unit_abbreviation}</td>
+                          <td>{reading.timestamp}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </>
+
+          ) : <p>Loading...</p>}
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
