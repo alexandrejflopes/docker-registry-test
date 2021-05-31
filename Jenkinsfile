@@ -14,7 +14,7 @@ node {
           2º arg -> caminho, no repositório, do Dockerfile da imagem a construir (pode não ser passado)
         */
         // "alexandrejflopes/testapp-image", "./testapp"
-        def customImage = docker.build("alexandrejflopes/testapp-image", "./testapp")
+        def customImage = docker.build("http://192.168.160.48/testapp-image", "./testapp")
 
         /* Push the container to the custom Registry */
         customImage.push()
